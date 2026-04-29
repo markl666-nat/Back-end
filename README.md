@@ -1,19 +1,19 @@
 # BattleCats Backend
 
-Backend для интернет-магазина по мобильной игре The Battle Cats от Ponos.
+Backend РґР»СЏ РёРЅС‚РµСЂРЅРµС‚-РјР°РіР°Р·РёРЅР° РїРѕ РјРѕР±РёР»СЊРЅРѕР№ РёРіСЂРµ The Battle Cats РѕС‚ Ponos.
 
-## Стек
+## РЎС‚РµРє
 - ASP.NET Core Web API
 - Entity Framework Core
 - AutoMapper
-- 4-слойная архитектура: Domain / DataAccess / BusinessLogic / Api
+- 4-СЃР»РѕР№РЅР°СЏ Р°СЂС…РёС‚РµРєС‚СѓСЂР°: Domain / DataAccess / BusinessLogic / Api
 
-## Структура
-- `BattleCats.Domains` — сущности и енумы
-- `BattleCats.DataAccess` — DbContext, миграции
-- `BattleCats.BusinessLogic` — сервисы, бизнес-логика
-- `BattleCats.Api` — контроллеры, конфигурация, Swagger
+## РЎС‚СЂСѓРєС‚СѓСЂР°
+- `BattleCats.Domains` вЂ” СЃСѓС‰РЅРѕСЃС‚Рё Рё РµРЅСѓРјС‹
+- `BattleCats.DataAccess` вЂ” DbContext, РјРёРіСЂР°С†РёРё
+- `BattleCats.BusinessLogic` вЂ” СЃРµСЂРІРёСЃС‹, Р±РёР·РЅРµСЃ-Р»РѕРіРёРєР°
+- `BattleCats.Api` вЂ” РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹, РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ, Swagger
 
-## Команда
+## РљРѕРјР°РЅРґР°
 - [@markl666-nat](https://github.com/markl666-nat)
 - [@radic](https://github.com/radic)
