@@ -480,3 +480,8 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Локальные сборки кода
+backend_code.txt
+frontend_code.txt
+*_code.txt
