@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BattleCatsStore.Domains.Entities.Products
+namespace BattleCats.Domain.Entities.Product
 {
+    /// <summary>
+    /// Подробное описание товара (лор юнита, описание бафа и т.д.).
+    /// Связь с BattleItem — one-to-one (один товар = одно описание).
+    /// Связь с DescriptionAdvanced — one-to-one (одно описание = одни боевые статы).
+    /// </summary>
     public class BattleItemLore
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LoreId { get; set; } // Сменили Id на LoreId
+        public int Id { get; set; }
 
+        /// <summary>Текст описания (лор кота, эффект бафа, и т.д.).</summary>
         [Required]
-        [StringLength(300)] // Чуть увеличили для смешных описаний
-        public string? FlavorText { get; set; } // Сменили Description на FlavorText
+        [StringLength(500)]
+        public string? Description { get; set; }
 
-        // Задел на будущее: меняем DescriptionAdvanced на CombatStats
-        public int CombatStatsId { get; set; }
-        public CombatStats AdvancedStats { get; set; } // Здесь будут HP, Урон, Дальность
+        /// <summary>Расширенные боевые характеристики (только для Cat Units).</summary>
+        public DescriptionAdvanced? DescriptionAdvanced { get; set; }
     }
 }
