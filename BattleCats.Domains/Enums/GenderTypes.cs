@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleCats.Domains.Enums
+﻿namespace BattleCats.Domain.Enums
 {
+    /// <summary>
+    /// Пол пользователя (опциональное поле при регистрации).
+    /// </summary>
     public enum GenderTypes
     {
-        None = 0,
+        NotSpecified = 0,
         Male = 1,
         Female = 2,
         Other = 3

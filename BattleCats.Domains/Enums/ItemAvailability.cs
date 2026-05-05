@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleCatsStore.Domains.Enums
+﻿namespace BattleCats.Domain.Enums
 {
+    /// <summary>
+    /// Статус доступности товара в магазине Battle Cats.
+    /// Используется в BattleItem для управления видимостью в каталоге.
+    /// </summary>
     public enum ItemAvailability
     {
-        Unknown = 0,
-        Available = 1,        // Обычная продажа / Доступно
-        Hidden = 2,           // Скрыто из каталога (аналог Inactive)
-        EventExclusive = 3,   // Доступно только во время ивентов (аналог Discontinued)
-        SoldOut = 4           // Распродано (для плюшевых игрушек)
+        /// <summary>Товар активен и виден в каталоге.</summary>
+        Active = 0,
+
+        /// <summary>Товар скрыт (например, временно недоступен).</summary>
+        Hidden = 1,
+
+        /// <summary>Товар удалён (для soft-delete).</summary>
+        Deleted = 2
     }
 }
