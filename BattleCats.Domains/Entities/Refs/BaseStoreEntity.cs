@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleCatsStore.Domains.Entities.Refs
+﻿namespace BattleCats.Domain.Entities.Refs
 {
-    public abstract class BaseStoreEntity
+    /// <summary>
+    /// Базовый класс для всех Entity, которые нужно отслеживать по времени.
+    /// Содержит общие поля CreatedAt и UpdatedAt.
+    /// От него наследуется BattleItem (товар).
+    /// </summary>
+    public class BaseStoreEntity
     {
-        // Дата появления кота/товара в архиве
-        public DateTime RecordedDate { get; set; } = DateTime.UtcNow;
-        // Последнее изменение характеристик или цены
-        public DateTime? LastUpdateDate { get; set; }
+        /// <summary>Дата создания записи в базе.</summary>
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        /// <summary>Дата последнего обновления.</summary>
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }
