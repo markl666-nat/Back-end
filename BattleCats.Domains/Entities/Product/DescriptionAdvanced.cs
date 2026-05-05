@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BattleCats.Domains.Entities.Product
+namespace BattleCats.Domain.Entities.Product
 {
+    /// <summary>
+    /// Расширенные характеристики товара (для боевых юнитов Battle Cats).
+    /// Связь с BattleItemLore — one-to-one (одно описание = одни характеристики).
+    /// Используется для демонстрации вложенной 1:1 связи в EF Core.
+    /// </summary>
     public class DescriptionAdvanced
     {
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int H { get; set; }
-        public int W { get; set; }
-        public int L { get; set; }
+
+        /// <summary>Здоровье юнита (Health).</summary>
+        public int Health { get; set; }
+
+        /// <summary>Атака юнита (Attack damage).</summary>
+        public int Attack { get; set; }
+
+        /// <summary>Дальность атаки (Attack range).</summary>
+        public int Range { get; set; }
     }
 }
