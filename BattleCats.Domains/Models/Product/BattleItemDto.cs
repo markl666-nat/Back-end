@@ -1,20 +1,19 @@
-﻿using BattleCats.Domains.Entities.Product;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BattleCats.Domain.Entities.Product;
 
-namespace BattleCatsStore.Domains.Models.Products
+namespace BattleCats.Domain.Models.Product
 {
+    /// <summary>
+    /// Расширенный DTO товара со всеми связанными объектами.
+    /// Используется внутри BusinessLogic слоя для передачи между сервисами.
+    /// Для возврата на фронт используется упрощённый BattleItemFlatDto.
+    /// </summary>
     public class BattleItemDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Rarity { get; set; }
-        public decimal Price { get; set; }
-        public string CategoryName { get; set; }
-        public string IconUrl { get; set; } // Ссылка на иконку кота (спрайт)
-        public bool IsLimitedEdition { get; set; } // Например, для плюшевых игрушек
+        public string Name { get; set; } = string.Empty;
+        public BattleItemLore? Lore { get; set; }
+        public ItemCategory Category { get; set; } = null!;
+        public List<ProductImgData> Images { get; set; } = new();
+        public decimal PriceEuro { get; set; }
     }
 }
