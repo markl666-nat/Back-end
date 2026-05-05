@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleCatsStore.Domains.Models.Base
+﻿namespace BattleCats.Domain.Models.Base
 {
-    // Исправили опечатку: Response вместо Responce
+    /// <summary>
+    /// Стандартная обёртка ответа для операций Create/Update/Delete.
+    /// Аналог ResponceMsg из эталонного проекта (имя сохранено, но "Response" — корректнее).
+    /// </summary>
     public class ActionResponse
     {
         public bool IsSuccess { get; set; }
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
     }
 }

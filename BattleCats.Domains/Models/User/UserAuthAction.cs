@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleCats.Domains.Models.User
+﻿namespace BattleCats.Domain.Models.User
 {
+    /// <summary>
+    /// DTO для запросов логина и регистрации.
+    /// Используется в AuthController при POST /api/auth/login и /api/auth/register.
+    /// </summary>
     public class UserAuthAction
     {
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public string Login { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string? Email { get; set; }
     }
 }
