@@ -1,37 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleCats.Domains.Entities.Refs;
-using BattleCats.Domains.Enums;
+using BattleCats.Domain.Entities.Refs;
+using BattleCats.Domain.Enums;
 
-namespace BattleCatsStore.Domains.Entities.Products
+namespace BattleCats.Domain.Entities.Product
 {
-    [Table("BattleCats_Inventory")] // Маскировка таблицы
+    /// <summary>
+    /// Главная сущность товара в магазине Cat Base Shop.
+    /// В контексте игры Battle Cats — это юнит-кот, баф, гача-капсула и т.д.
+    /// Наследует BaseStoreEntity для трекинга времени создания/обновления.
+    /// </summary>
     public class BattleItem : BaseStoreEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int InternalId { get; set; } // Сменили Id на InternalId
+        public int Id { get; set; }
 
+        /// <summary>Название товара (имя кота, название бафа). На фронте — title.</summary>
         [Required]
-        [MaxLength(80)]
-        public string ItemName { get; set; } // Имя кота или название баффа
+        [StringLength(50)]
+        public string Name { get; set; } = string.Empty;
 
-        public decimal CatFoodPrice { get; set; } // Валюта в игре — Cat Food (Кетфуд)
+        /// <summary>Связь с описанием (one-to-one, опционально).</summary>
+        public BattleItemLore? Lore { get; set; }
 
-        // Новые уникальные поля под тему игры
-        public string RarityTier { get; set; } // Rare, Super Rare, Uber Super Rare
-        public int PowerLevel { get; set; } // Уровень силы (важно для котов)
+        /// <summary>Связь с категорией (many-to-one).</summary>
+        public ItemCategory Category { get; set; } = null!;
 
-        // Связь с категорией (Коты / Баффы / Плюши)
-        public int CategoryId { get; set; }
-        public virtual ItemCategory Group { get; set; }
+        /// <summary>Список изображений (one-to-many).</summary>
+        public List<ProductImgData> Images { get; set; } = new();
 
-        public virtual ICollection<ItemAsset> Assets { get; set; } // Спрайты или фото игрушек
-        public ProductStatus StockStatus { get; set; }
+        /// <summary>Цена в евро. На фронте — priceEuro.</summary>
+        public decimal PriceEuro { get; set; }
+
+        /// <summary>Статус доступности товара (Active/Hidden/Deleted).</summary>
+        public ItemAvailability Status { get; set; } = ItemAvailability.Active;
     }
 }
