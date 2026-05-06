@@ -44,12 +44,14 @@ namespace BattleCats.BusinessLogic.Core.Products
 
         protected BattleItemDto GetBattleItemDataByIdAction(int id)
         {
-            BattleItem bData;
+            BattleItem? bData;
             using (var db = new ProductContext())
             {
                 //TODO: Add InerJoin to select on D3 and D4!
                 bData = db.BattleItems.FirstOrDefault(x => x.Id == id);
             }
+
+            if (bData == null) return null!;
 
             return new BattleItemDto()
             {
@@ -101,7 +103,7 @@ namespace BattleCats.BusinessLogic.Core.Products
 
         protected ActionResponse ExecuteBattleItemCreateAction(BattleItemDto item)
         {
-            BattleItem bData;
+            BattleItem? bData;
             using (var db = new ProductContext())
             {
                 bData = db.BattleItems.FirstOrDefault(
