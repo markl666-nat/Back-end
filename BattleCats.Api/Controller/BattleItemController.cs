@@ -1,61 +1,60 @@
 ﻿using BattleCats.BusinessLogic.Interface;
 using BattleCats.Domains.Models.Product;
-using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BattleCats.Api.Controller
 {
-    [Route("api/product")]
+    [Route("api/battleitem")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class BattleItemController : ControllerBase
     {
-        private IProduct _product;
+        private IBattleItem _battleItem;
 
-        public ProductController()
+        public BattleItemController()
         {
             var bl = new BusinessLogic.BusinessLogic();
-            _product = bl.GetProductActions();
+            _battleItem = bl.GetBattleItemActions();
         }
 
         [HttpGet("getAll")]
-        public IActionResult GetAllProducts()
+        public IActionResult GetAllBattleItems()
         {
-            var products = _product.GetAllProductsAction();
-            return Ok(products);
+            var items = _battleItem.GetAllBattleItemsAction();
+            return Ok(items);
         }
 
         [HttpGet("id")]
         public IActionResult Get(int id)
         {
-            var product = _product.GetProductByIdAction(id);
+            var item = _battleItem.GetBattleItemByIdAction(id);
 
-            if (product == null) 
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(item);
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] ProductDto product)
+        public IActionResult Create([FromBody] BattleItemDto item)
         {
-            var status = _product.ResponceProductCreateAction(product);
+            var status = _battleItem.ResponceBattleItemCreateAction(item);
             return Ok(status);
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] ProductDto product)
+        public IActionResult Update([FromBody] BattleItemDto item)
         {
-            var status = _product.ResponceProductUpdateAction(product);
+            var status = _battleItem.ResponceBattleItemUpdateAction(item);
             return Ok(status);
         }
 
         [HttpDelete("id")]
         public IActionResult Delete(int id)
         {
-            var status = _product.ResponceProductDeleteAction(id);
+            var status = _battleItem.ResponceBattleItemDeleteAction(id);
             return Ok(status);
         }
     }
