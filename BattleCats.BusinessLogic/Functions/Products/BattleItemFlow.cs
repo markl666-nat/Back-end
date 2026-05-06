@@ -1,46 +1,36 @@
-﻿using System.Collections.Generic;
-using BattleCatsStore.BusinessLogic.Core.BattleItems;
-using BattleCatsStore.BusinessLogic.Interface;
-using BattleCatsStore.Domains.Entities.Products;
-using BattleCatsStore.Domains.Models.Base;
-using BattleCatsStore.Domains.Models.Products;
+﻿using BattleCats.BusinessLogic.Core.Products;
+using BattleCats.BusinessLogic.Interface;
+using BattleCats.Domains.Models.Base;
+using BattleCats.Domains.Models.Product;
 
-namespace BattleCatsStore.BusinessLogic.Services.BattleItems
+namespace BattleCats.BusinessLogic.Functions.Products
 {
-    // Вместо ProductFlow используем BattleItemService
-    // Наследуемся от BattleItemLogic (бывший ProductAction)
-    public class BattleItemService : BattleItemActions, IBattleItem
+    public class BattleItemFlow : BattleItemActions, IBattleItem
     {
-        // Получение всех боевых единиц (Котов, Баффов, Мерча)
-        public List<BattleItemDto> GetAllCombatUnits()
+        public List<BattleItemDto> GetAllBattleItemsAction()
         {
-            // Вызываем внутреннюю логику обработки из базового класса
-            var inventory = ExecuteLoadAllItems();
-            return inventory;
+            var items = ExecuteGetAllBattleItemsAction();
+            return items;
         }
 
-        // Поиск конкретного юнита по ID
-        public BattleItemDto? GetUnitByInternalId(int id)
+        public BattleItemDto GetBattleItemByIdAction(int id)
         {
-            return FetchItemDataFromStorage(id);
+            return GetBattleItemDataByIdAction(id);
         }
 
-        // Обновление данных (например, изменение цены в Кетфуде)
-        public ActionResponse UpdateItemRecord(BattleItemDto item)
+        public ActionResponse ResponceBattleItemUpdateAction(BattleItemDto item)
         {
-            return ExecuteItemUpdateProcess(item);
+            return ExecuteBattleItemUpdateAction(item);
         }
 
-        // Удаление (архивация) юнита из магазина
-        public ActionResponse RemoveItemFromCatalog(int id)
+        public ActionResponse ResponceBattleItemDeleteAction(int id)
         {
-            return ExecuteItemRemoval(id);
+            return ExecuteBattleItemDeleteAction(id);
         }
 
-        // Регистрация нового юнита или товара
-        public ActionResponse RegisterNewItem(BattleItemDto item)
+        public ActionResponse ResponceBattleItemCreateAction(BattleItemDto item)
         {
-            return ExecuteItemCreation(item);
+            return ExecuteBattleItemCreateAction(item);
         }
     }
 }
