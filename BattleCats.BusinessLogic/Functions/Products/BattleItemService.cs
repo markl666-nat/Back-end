@@ -9,7 +9,7 @@ namespace BattleCatsStore.BusinessLogic.Services.BattleItems
 {
     // Вместо ProductFlow используем BattleItemService
     // Наследуемся от BattleItemLogic (бывший ProductAction)
-    public class BattleItemService : BattleItemLogic, IBattleItem
+    public class BattleItemService : BattleItemActions, IBattleItem
     {
         // Получение всех боевых единиц (Котов, Баффов, Мерча)
         public List<BattleItemDto> GetAllCombatUnits()

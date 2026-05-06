@@ -9,7 +9,7 @@ using BattleCatsStore.Domains.Models.Products;
 
 namespace BattleCatsStore.BusinessLogic.Core.BattleItems
 {
-    public class BattleItemLogic
+    public class BattleItemActions
     {
         // Метод загрузки всего инвентаря
         protected List<BattleItemDto> ExecuteLoadAllItems()
