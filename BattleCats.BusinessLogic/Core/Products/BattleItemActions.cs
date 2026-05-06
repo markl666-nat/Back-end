@@ -8,6 +8,7 @@ using BattleCats.Domains.Entities.Product;
 using BattleCats.Domains.Enums;
 using BattleCats.Domains.Models.Base;
 using BattleCats.Domains.Models.Product;
+using BattleCats.BusinessLogic.Mapping;
 
 namespace BattleCats.BusinessLogic.Core.Products
 {
@@ -24,22 +25,7 @@ namespace BattleCats.BusinessLogic.Core.Products
                 bData = db.BattleItems.ToList();
             }
 
-            foreach (var item in bData)
-            {
-                var battleItem = new BattleItemDto()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Lore = item.Lore,
-                    Category = item.Category,
-                    Images = item.Images,
-                    PriceEuro = item.PriceEuro
-                };
-
-                items.Add(battleItem);
-            }
-
-            return items;
+            return MapperConfig.Mapper.Map<List<BattleItemDto>>(bData);
         }
 
         protected BattleItemDto GetBattleItemDataByIdAction(int id)
@@ -53,15 +39,7 @@ namespace BattleCats.BusinessLogic.Core.Products
 
             if (bData == null) return null!;
 
-            return new BattleItemDto()
-            {
-                Id = bData.Id,
-                Name = bData.Name,
-                Lore = bData.Lore,
-                Category = bData.Category,
-                Images = bData.Images,
-                PriceEuro = bData.PriceEuro
-            };
+            return MapperConfig.Mapper.Map<BattleItemDto>(bData);
         }
 
         protected ActionResponse ExecuteBattleItemUpdateAction(BattleItemDto item)
@@ -103,7 +81,7 @@ namespace BattleCats.BusinessLogic.Core.Products
 
         protected ActionResponse ExecuteBattleItemCreateAction(BattleItemDto item)
         {
-            BattleItem? bData;
+           BattleItem? bData;
             using (var db = new ProductContext())
             {
                 bData = db.BattleItems.FirstOrDefault(
@@ -119,15 +97,8 @@ namespace BattleCats.BusinessLogic.Core.Products
                 };
             }
 
-            var bLocalData = new BattleItem
-            {
-                Name = item.Name,
-                PriceEuro = item.PriceEuro,
-                Lore = item.Lore,
-                Category = item.Category,
-                Images = item.Images,
-                Status = ItemAvailability.Active
-            };
+            var bLocalData = MapperConfig.Mapper.Map<BattleItem>(item);
+            bLocalData.Status = ItemAvailability.Active;
 
             using (var db = new ProductContext())
             {
