@@ -28,7 +28,7 @@ namespace BattleCats.DataAccess.Context
         /// </summary>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(DbSession.ConnectionStrings.ProductDB);
+            optionsBuilder.UseSqlServer(DbSession.ConnectionStrings);
         }
 
         /// <summary>

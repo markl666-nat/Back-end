@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 BattleCats.DataAccess.DbSession.ConnectionStrings =
-    builder.Configuration.GetConnectionString("DefaultConnection");
+    builder.Configuration.GetConnectionString("DefaultConnection")!;
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
