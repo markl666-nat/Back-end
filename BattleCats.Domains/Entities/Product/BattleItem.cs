@@ -31,6 +31,7 @@ namespace BattleCats.Domains.Entities.Product
         public List<ProductImgData> Images { get; set; } = new();
 
         /// <summary>Цена в евро. На фронте — priceEuro.</summary>
+        [Column(TypeName = "decimal(10,2)")]
         public decimal PriceEuro { get; set; }
 
         /// <summary>Статус доступности товара (Active/Hidden/Deleted).</summary>
