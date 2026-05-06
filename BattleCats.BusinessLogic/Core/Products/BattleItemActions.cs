@@ -1,133 +1,143 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BattleCatsStore.DataAccess.Context;
-using BattleCatsStore.Domains.Entities.Products;
-using BattleCatsStore.Domains.Enums;
-using BattleCatsStore.Domains.Models.Base;
-using BattleCatsStore.Domains.Models.Products;
+using System.Text;
+using System.Threading.Tasks;
+using BattleCats.DataAccess.Context;
+using BattleCats.Domains.Entities.Product;
+using BattleCats.Domains.Enums;
+using BattleCats.Domains.Models.Base;
+using BattleCats.Domains.Models.Product;
 
-namespace BattleCatsStore.BusinessLogic.Core.BattleItems
+namespace BattleCats.BusinessLogic.Core.Products
 {
     public class BattleItemActions
     {
-        // Метод загрузки всего инвентаря
-        protected List<BattleItemDto> ExecuteLoadAllItems()
+        protected List<BattleItemDto> ExecuteGetAllBattleItemsAction()
         {
-            var resultList = new List<BattleItemDto>();
-            List<BattleItem> dbItems;
+            var items = new List<BattleItemDto>();
+            List<BattleItem> bData;
 
-            using (var db = new BattleCatsContext()) // Название контекста под вашу тему
+            using (var db = new ProductContext())
             {
-                // Загружаем данные из таблицы
-                dbItems = db.Inventory.ToList();
+                //TODO: Add InerJoin to select on D3 and D4!
+                bData = db.BattleItems.ToList();
             }
 
-            foreach (var item in dbItems)
+            foreach (var item in bData)
             {
-                resultList.Add(new BattleItemDto
+                var battleItem = new BattleItemDto()
                 {
-                    Id = item.InternalId,
-                    Name = item.ItemName,
-                    Price = item.CatFoodPrice,
-                    Rarity = item.RarityTier,
-                    // Здесь мы мапим данные из сущности в DTO
-                });
+                    Id = item.Id,
+                    Name = item.Name,
+                    Lore = item.Lore,
+                    Category = item.Category,
+                    Images = item.Images,
+                    PriceEuro = item.PriceEuro
+                };
+
+                items.Add(battleItem);
             }
 
-            return resultList;
+            return items;
         }
 
-        // Поиск юнита по ID штаба
-        protected BattleItemDto? FetchItemDataFromStorage(int id)
+        protected BattleItemDto GetBattleItemDataByIdAction(int id)
         {
-            BattleItem? entry;
-            using (var db = new BattleCatsContext())
+            BattleItem bData;
+            using (var db = new ProductContext())
             {
-                entry = db.Inventory.FirstOrDefault(x => x.InternalId == id);
+                //TODO: Add InerJoin to select on D3 and D4!
+                bData = db.BattleItems.FirstOrDefault(x => x.Id == id);
             }
 
-            if (entry == null) return null;
-
-            return new BattleItemDto
+            return new BattleItemDto()
             {
-                Id = entry.InternalId,
-                Name = entry.ItemName,
-                Price = entry.CatFoodPrice,
-                Rarity = entry.RarityTier
+                Id = bData.Id,
+                Name = bData.Name,
+                Lore = bData.Lore,
+                Category = bData.Category,
+                Images = bData.Images,
+                PriceEuro = bData.PriceEuro
             };
         }
 
-        // Обновление характеристик или цены
-        protected ActionResponse ExecuteItemUpdateProcess(BattleItemDto itemDto)
+        protected ActionResponse ExecuteBattleItemUpdateAction(BattleItemDto item)
         {
-            using (var db = new BattleCatsContext())
+            using (var db = new ProductContext())
             {
-                var existingEntry = db.Inventory.FirstOrDefault(x => x.InternalId == itemDto.Id);
-                if (existingEntry == null)
+                var bData = db.BattleItems.FirstOrDefault(x => x.Id == item.Id);
+                if (bData == null)
                 {
-                    return new ActionResponse { IsSuccess = false, Message = "Unit not found in Cat Army records." };
+                    return new ActionResponse { IsSuccess = false, Message = "Battle item not found." };
                 }
 
-                // Обновляем поля
-                existingEntry.ItemName = itemDto.Name;
-                existingEntry.CatFoodPrice = itemDto.Price;
-                existingEntry.RarityTier = itemDto.Rarity;
-                existingEntry.LastUpdateDate = DateTime.UtcNow;
+                bData.Name = item.Name;
+                bData.Lore = item.Lore;
+                bData.Category = item.Category;
+                bData.Images = item.Images;
+                bData.PriceEuro = item.PriceEuro;
 
                 db.SaveChanges();
             }
 
-            return new ActionResponse { IsSuccess = true, Message = "Unit data synchronized successfully." };
+            return new ActionResponse { IsSuccess = true, Message = "Battle item updated successfully." };
         }
 
-        // Удаление юнита
-        protected ActionResponse ExecuteItemRemoval(int id)
+        protected ActionResponse ExecuteBattleItemDeleteAction(int id)
         {
-            using (var db = new BattleCatsContext())
+            using (var db = new ProductContext())
             {
-                var entryToDelete = db.Inventory.FirstOrDefault(x => x.InternalId == id);
-                if (entryToDelete == null)
+                var bData = db.BattleItems.FirstOrDefault(x => x.Id == id);
+                if (bData == null)
                 {
-                    return new ActionResponse { IsSuccess = false, Message = "Target unit does not exist." };
+                    return new ActionResponse { IsSuccess = false, Message = "Battle item not found." };
                 }
-
-                db.Inventory.Remove(entryToDelete);
+                db.BattleItems.Remove(bData);
                 db.SaveChanges();
             }
-            return new ActionResponse { IsSuccess = true, Message = "Unit removed from the battlefield." };
+            return new ActionResponse { IsSuccess = true, Message = "Battle item deleted successfully." };
         }
 
-        // Создание нового юнита/товара
-        protected ActionResponse ExecuteItemCreation(BattleItemDto itemDto)
+        protected ActionResponse ExecuteBattleItemCreateAction(BattleItemDto item)
         {
-            using (var db = new BattleCatsContext())
+            BattleItem bData;
+            using (var db = new ProductContext())
             {
-                // Проверка на дубликаты по имени
-                var duplicate = db.Inventory.Any(x => x.ItemName.Equals(itemDto.Name));
-                if (duplicate)
-                {
-                    return new ActionResponse
-                    {
-                        IsSuccess = false,
-                        Message = "A unit with this name is already drafted."
-                    };
-                }
+                bData = db.BattleItems.FirstOrDefault(
+                    x => x.Name.Equals(item.Name));
+            }
 
-                var newUnit = new BattleItem
+            if (bData != null)
+            {
+                return new ActionResponse
                 {
-                    ItemName = itemDto.Name,
-                    CatFoodPrice = itemDto.Price,
-                    RarityTier = itemDto.Rarity,
-                    StockStatus = ItemAvailability.Available,
-                    RecordedDate = DateTime.UtcNow
+                    IsSuccess = false,
+                    Message = "A battle item with this Name already exist in our system."
                 };
+            }
 
-                db.Inventory.Add(newUnit);
+            var bLocalData = new BattleItem
+            {
+                Name = item.Name,
+                PriceEuro = item.PriceEuro,
+                Lore = item.Lore,
+                Category = item.Category,
+                Images = item.Images,
+                Status = ItemAvailability.Active
+            };
+
+            using (var db = new ProductContext())
+            {
+                db.BattleItems.Add(bLocalData);
                 db.SaveChanges();
             }
 
-            return new ActionResponse { IsSuccess = true, Message = "New unit has been deployed!" };
+            return new ActionResponse
+            {
+                IsSuccess = true,
+                Message = "Battle item was succesfully added."
+            };
         }
     }
 }
