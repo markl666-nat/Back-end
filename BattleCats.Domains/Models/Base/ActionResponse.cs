@@ -1,4 +1,4 @@
-﻿namespace BattleCats.Domain.Models.Base
+﻿namespace BattleCats.Domains.Models.Base
 {
     /// <summary>
     /// Стандартная обёртка ответа для операций Create/Update/Delete.

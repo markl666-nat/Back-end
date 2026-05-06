@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BattleCats.Domain.Entities.Product
+namespace BattleCats.Domains.Entities.Product
 {
     /// <summary>
     /// Категория товара в магазине Battle Cats.

@@ -1,6 +1,6 @@
-﻿using BattleCats.Domain.Entities.Product;
+﻿using BattleCats.Domains.Entities.Product;
 
-namespace BattleCats.Domain.Models.Product
+namespace BattleCats.Domains.Models.Product
 {
     /// <summary>
     /// Расширенный DTO товара со всеми связанными объектами.

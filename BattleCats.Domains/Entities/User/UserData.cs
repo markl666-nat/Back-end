@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BattleCats.Domain.Enums;
+using BattleCats.Domains.Enums;
 
-namespace BattleCats.Domain.Entities.User
+namespace BattleCats.Domains.Entities.User
 {
     /// <summary>
     /// Сущность пользователя сайта Cat Base Shop.

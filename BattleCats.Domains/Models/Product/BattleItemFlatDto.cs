@@ -1,4 +1,4 @@
-﻿namespace BattleCats.Domain.Models.Product
+﻿namespace BattleCats.Domains.Models.Product
 {
     /// <summary>
     /// Плоский DTO товара для возврата на фронт.

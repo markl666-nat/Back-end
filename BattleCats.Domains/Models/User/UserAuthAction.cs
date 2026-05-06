@@ -1,4 +1,4 @@
-﻿namespace BattleCats.Domain.Models.User
+﻿namespace BattleCats.Domains.Models.User
 {
     /// <summary>
     /// DTO для запросов логина и регистрации.

@@ -1,4 +1,4 @@
-﻿namespace BattleCats.Domain.Entities.Refs
+﻿namespace BattleCats.Domains.Entities.Refs
 {
     /// <summary>
     /// Базовый класс для всех Entity, которые нужно отслеживать по времени.

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using BattleCats.Domain.Entities.Refs;
-using BattleCats.Domain.Enums;
+using BattleCats.Domains.Entities.Refs;
+using BattleCats.Domains.Enums;
 
-namespace BattleCats.Domain.Entities.Product
+namespace BattleCats.Domains.Entities.Product
 {
     /// <summary>
     /// Главная сущность товара в магазине Cat Base Shop.

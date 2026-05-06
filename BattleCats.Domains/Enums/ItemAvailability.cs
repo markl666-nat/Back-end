@@ -1,4 +1,4 @@
-﻿namespace BattleCats.Domain.Enums
+﻿namespace BattleCats.Domains.Enums
 {
     /// <summary>
     /// Статус доступности товара в магазине Battle Cats.
