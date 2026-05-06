@@ -1,5 +1,5 @@
-﻿using BattleCats.Domain.Entities.Product;
-using BattleCats.Domain.Enums;
+﻿using BattleCats.Domains.Entities.Product;
+using BattleCats.Domains.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace BattleCats.DataAccess.Context

@@ -1,4 +1,4 @@
-﻿using BattleCats.Domain.Entities.User;
+﻿using BattleCats.Domains.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace BattleCats.DataAccess.Context
