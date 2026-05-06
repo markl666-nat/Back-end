@@ -13,9 +13,9 @@ namespace BattleCats.BusinessLogic
             return new AuthFlow();
         }
 
-        public IProduct GetProductActions()
+        public IBattleItem GetBattleItemActions()
         {
-            return new ProductFlow();
+            return new BattleItemFlow();
         }
     }
 }
