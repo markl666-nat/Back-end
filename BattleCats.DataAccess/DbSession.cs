@@ -13,6 +13,6 @@ namespace BattleCats.DataAccess
     /// </summary>
     public class DbSession
     {
-        public static string ConnectionStrings { get; set; }
+        public static string ConnectionStrings { get; set; } = string.Empty;
     }
 }
