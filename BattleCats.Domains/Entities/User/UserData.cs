@@ -34,5 +34,10 @@ namespace BattleCats.Domains.Entities.User
         public DateTime DOB { get; set; }
 
         public GenderTypes Gender { get; set; } = GenderTypes.NotSpecified;
+        /// <summary>
+        /// Роль пользователя для разграничения доступа через [Authorize(Roles=...)].
+        /// По умолчанию — User. Назначается при регистрации в RegisterActions.
+        /// </summary>
+        public UserRole Role { get; set; } = UserRole.User;
     }
 }
