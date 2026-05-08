@@ -75,7 +75,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();   // отключено для dev — фронт ходит по HTTP с Vite
 app.UseCors("AllowFrontend");
 
 // КРИТИЧНО: порядок middleware — Authentication ДО Authorization.
