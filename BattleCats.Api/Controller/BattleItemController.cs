@@ -1,15 +1,25 @@
 ﻿using BattleCats.BusinessLogic.Interface;
 using BattleCats.Domains.Models.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BattleCats.Api.Controller
 {
+    /// <summary>
+    /// Контроллер боевых юнитов Cat Base Shop.
+    /// 
+    /// По умолчанию [Authorize] на классе — все методы требуют валидный токен.
+    /// GetAll/GetById помечены [AllowAnonymous] — каталог виден всем.
+    /// Create/Update — только Manager+ или Admin.
+    /// Delete — только Admin (нельзя удалять без admin-прав).
+    /// </summary>
     [Route("api/battleitem")]
     [ApiController]
+    [Authorize]
     public class BattleItemController : ControllerBase
     {
-        private IBattleItem _battleItem;
+        private readonly IBattleItem _battleItem;
 
         public BattleItemController()
         {
@@ -18,6 +28,7 @@ namespace BattleCats.Api.Controller
         }
 
         [HttpGet("getAll")]
+        [AllowAnonymous]
         public IActionResult GetAllBattleItems()
         {
             var items = _battleItem.GetAllBattleItemsAction();
@@ -25,6 +36,7 @@ namespace BattleCats.Api.Controller
         }
 
         [HttpGet("id")]
+        [AllowAnonymous]
         public IActionResult Get(int id)
         {
             var item = _battleItem.GetBattleItemByIdAction(id);
@@ -38,6 +50,7 @@ namespace BattleCats.Api.Controller
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Manager")]
         public IActionResult Create([FromBody] BattleItemDto item)
         {
             var status = _battleItem.ResponceBattleItemCreateAction(item);
@@ -45,6 +58,7 @@ namespace BattleCats.Api.Controller
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin,Manager")]
         public IActionResult Update([FromBody] BattleItemDto item)
         {
             var status = _battleItem.ResponceBattleItemUpdateAction(item);
@@ -52,6 +66,7 @@ namespace BattleCats.Api.Controller
         }
 
         [HttpDelete("id")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var status = _battleItem.ResponceBattleItemDeleteAction(id);
