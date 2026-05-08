@@ -76,6 +76,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowFrontend");
 
 // КРИТИЧНО: порядок middleware — Authentication ДО Authorization.
 // Authentication читает токен и заполняет HttpContext.User.
