@@ -1,20 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleCats.BusinessLogic.Core.Auth;
+﻿using BattleCats.BusinessLogic.Core.Auth;
 using BattleCats.BusinessLogic.Interface;
+using BattleCats.Domains.Models.Base;
 using BattleCats.Domains.Models.User;
 
 namespace BattleCats.BusinessLogic.Functions.Auth
 {
+    /// <summary>
+    /// Поток обработки логина. Тонкая обёртка над AuthActions:
+    /// валидируем учётку → если ок, выдаём токен → возвращаем ResponceAction.
+    /// </summary>
     public class AuthFlow : AuthActions, IAuthActions
     {
-        public object? LoginActionFlow(UserAuthAction auth)
+        public ResponceAction LoginActionFlow(UserAuthAction auth)
         {
-            var isValid = ValidateLogin(auth);
-            return isValid ? GenToken(auth) : null;
+            var user = ValidateLoginExecution(auth);
+
+            if (user == null)
+            {
+                return new ResponceAction
+                {
+                    IsSuccess = false,
+                    Message = "Invalid username or password."
+                };
+            }
+
+            var token = GenerateUserToken(user);
+
+            return new ResponceAction
+            {
+                IsSuccess = true,
+                Message = token,    // ← в Message лежит JWT
+                Id = user.Id
+            };
         }
     }
 }
