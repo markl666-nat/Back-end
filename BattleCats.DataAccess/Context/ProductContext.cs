@@ -69,7 +69,7 @@ namespace BattleCats.DataAccess.Context
                 .IsRequired(false);
 
             modelBuilder.Entity<BattleItemLore>().HasData(
-                // Cat Units (id 1-14 — для каждого свой stat)
+                // Cat Units
                 new { Id = 1, Description = "Базовый кот-новобранец. Дешёвый, быстро призывается, отлично прикрывает фронт.", DescriptionAdvancedId = (int?)1 },
                 new { Id = 2, Description = "Танкокот с огромным запасом здоровья. Поглощает удары вместо лёгких юнитов.", DescriptionAdvancedId = (int?)2 },
                 new { Id = 3, Description = "Снайпер-кот с длинной дальностью атаки. Бьёт врагов из глубокого тыла.", DescriptionAdvancedId = (int?)3 },
@@ -85,7 +85,7 @@ namespace BattleCats.DataAccess.Context
                 new { Id = 16, Description = "Pen-Pineapple-Apple-Pen Cat. Простая мелодия — мощное оружие.", DescriptionAdvancedId = (int?)13 },
                 new { Id = 17, Description = "Сквайр Луно — благородный молодой воин на службе ночи.", DescriptionAdvancedId = (int?)14 },
                 new { Id = 18, Description = "Желейный кот. Мягкий снаружи, крепкий внутри. Растворяет врагов кислотой.", DescriptionAdvancedId = (int?)1 },
-                // Base Upgrades (без статов)
+                // Base Upgrades
                 new { Id = 4, Description = "Апгрейд скорости работы базы кошачьего штаба. Ускоряет выпуск юнитов.", DescriptionAdvancedId = (int?)null },
                 new { Id = 19, Description = "Breakerblast Base — пушка-разрушитель на крыше базы. Бьёт по дальним целям.", DescriptionAdvancedId = (int?)null },
                 new { Id = 20, Description = "Стандартное укрепление базы. Простое, дешёвое, эффективное против лёгких атак.", DescriptionAdvancedId = (int?)null },
@@ -148,14 +148,13 @@ namespace BattleCats.DataAccess.Context
             );
 
             // ============================================
-            // 5) Изображения — каждому товару своя локальная картинка
-            //    URL ведут на public/images/cats/ фронтенда
+            // 5) Изображения — все локальные, лежат в public/images/cats/ фронтенда
             // ============================================
             modelBuilder.Entity<ProductImgData>().HasData(
                 // Cat Units
-                new ProductImgData { Id = 1, BattleItemId = 1, Url = "https://battlecats-db.com/img/unit/000/00/icon.png" },
-                new ProductImgData { Id = 2, BattleItemId = 2, Url = "https://battlecats-db.com/img/unit/002/00/icon.png" },
-                new ProductImgData { Id = 3, BattleItemId = 3, Url = "https://battlecats-db.com/img/unit/004/00/icon.png" },
+                new ProductImgData { Id = 1, BattleItemId = 1, Url = "/images/cats/slime_cat.jpg" },
+                new ProductImgData { Id = 2, BattleItemId = 2, Url = "/images/cats/courier_cat.jpg" },
+                new ProductImgData { Id = 3, BattleItemId = 3, Url = "/images/cats/Kasli_the_Bane.jpg" },
                 new ProductImgData { Id = 7, BattleItemId = 7, Url = "/images/cats/D_artanyan.jpg" },
                 new ProductImgData { Id = 8, BattleItemId = 8, Url = "/images/cats/D_arktanyan.jpg" },
                 new ProductImgData { Id = 9, BattleItemId = 9, Url = "/images/cats/Kaoru_Hanayama.jpg" },
@@ -169,16 +168,16 @@ namespace BattleCats.DataAccess.Context
                 new ProductImgData { Id = 17, BattleItemId = 17, Url = "/images/cats/squire_luno.jpg" },
                 new ProductImgData { Id = 18, BattleItemId = 18, Url = "/images/cats/slime_cat.jpg" },
                 // Base Upgrades
-                new ProductImgData { Id = 4, BattleItemId = 4, Url = "https://battlecats-db.com/img/items/speedup.png" },
+                new ProductImgData { Id = 4, BattleItemId = 4, Url = "/images/cats/default_base.jpg" },
                 new ProductImgData { Id = 19, BattleItemId = 19, Url = "/images/cats/breakerblast_base.jpg" },
                 new ProductImgData { Id = 20, BattleItemId = 20, Url = "/images/cats/default_base.jpg" },
                 new ProductImgData { Id = 21, BattleItemId = 21, Url = "/images/cats/thunderbolt_base.jpg" },
                 // Buffs
-                new ProductImgData { Id = 5, BattleItemId = 5, Url = "https://battlecats-db.com/img/items/buff.png" },
+                new ProductImgData { Id = 5, BattleItemId = 5, Url = "/images/cats/catcombo_buff_1.jpg" },
                 new ProductImgData { Id = 22, BattleItemId = 22, Url = "/images/cats/catcombo_buff_1.jpg" },
                 new ProductImgData { Id = 23, BattleItemId = 23, Url = "/images/cats/catcombo_buff_2.jpg" },
                 // Gacha
-                new ProductImgData { Id = 6, BattleItemId = 6, Url = "https://battlecats-db.com/img/items/capsule.png" },
+                new ProductImgData { Id = 6, BattleItemId = 6, Url = "/images/cats/normal_gacha.jpg" },
                 new ProductImgData { Id = 24, BattleItemId = 24, Url = "/images/cats/gold_gacha.jpg" },
                 new ProductImgData { Id = 25, BattleItemId = 25, Url = "/images/cats/normal_gacha.jpg" }
             );
@@ -186,4 +185,4 @@ namespace BattleCats.DataAccess.Context
             base.OnModelCreating(modelBuilder);
         }
     }
-}
+}   
