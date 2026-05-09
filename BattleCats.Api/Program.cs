@@ -11,7 +11,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Connection string из appsettings.json подаЄм в DbSession (используетс€ во всех DbContext'ах)
 BattleCats.DataAccess.DbSession.ConnectionStrings =
     builder.Configuration.GetConnectionString("DefaultConnection")!;
-
+// CORS Ч разрешаем фронту с локального dev-сервера обращатьс€ к API.
+// –егистраци€ политики (addPolicy). јктиваци€ ниже через app.UseCors("AllowFrontend").
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:5173",   // Vite dev по умолчанию
+                "http://localhost:5174",   // запасной порт Vite
+                "http://localhost:3000"    // на случай если переключат на CRA
+              )
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
