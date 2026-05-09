@@ -9,22 +9,30 @@ using BattleCats.Domains.Enums;
 using BattleCats.Domains.Models.Base;
 using BattleCats.Domains.Models.Product;
 using BattleCats.BusinessLogic.Mapping;
+using Microsoft.EntityFrameworkCore;
 
 namespace BattleCats.BusinessLogic.Core.Products
 {
     public class BattleItemActions
     {
+        /// <summary>
+        /// Загружаем товары вместе со всеми связанными сущностями:
+        /// Category (для бейджа категории), Lore + DescriptionAdvanced (описание + статы),
+        /// Images (картинки). Без Include() EF Core оставляет навигационные свойства null,
+        /// и AutoMapper мапит их в null на стороне DTO — отсюда пустые карточки на фронте.
+        /// </summary>
         protected List<BattleItemDto> ExecuteGetAllBattleItemsAction()
         {
-            var items = new List<BattleItemDto>();
             List<BattleItem> bData;
-
             using (var db = new ProductContext())
             {
-                //TODO: Add InerJoin to select on D3 and D4!
-                bData = db.BattleItems.ToList();
+                bData = db.BattleItems
+                    .Include(b => b.Category)
+                    .Include(b => b.Lore)
+                        .ThenInclude(l => l!.DescriptionAdvanced)
+                    .Include(b => b.Images)
+                    .ToList();
             }
-
             return MapperConfig.Mapper.Map<List<BattleItemDto>>(bData);
         }
 
@@ -33,12 +41,15 @@ namespace BattleCats.BusinessLogic.Core.Products
             BattleItem? bData;
             using (var db = new ProductContext())
             {
-                //TODO: Add InerJoin to select on D3 and D4!
-                bData = db.BattleItems.FirstOrDefault(x => x.Id == id);
+                bData = db.BattleItems
+                    .Include(b => b.Category)
+                    .Include(b => b.Lore)
+                        .ThenInclude(l => l!.DescriptionAdvanced)
+                    .Include(b => b.Images)
+                    .FirstOrDefault(x => x.Id == id);
             }
 
             if (bData == null) return null!;
-
             return MapperConfig.Mapper.Map<BattleItemDto>(bData);
         }
 
@@ -46,7 +57,11 @@ namespace BattleCats.BusinessLogic.Core.Products
         {
             using (var db = new ProductContext())
             {
-                var bData = db.BattleItems.FirstOrDefault(x => x.Id == item.Id);
+                var bData = db.BattleItems
+                    .Include(b => b.Lore)
+                    .Include(b => b.Images)
+                    .FirstOrDefault(x => x.Id == item.Id);
+
                 if (bData == null)
                 {
                     return new ActionResponse { IsSuccess = false, Message = "Battle item not found." };
@@ -57,10 +72,8 @@ namespace BattleCats.BusinessLogic.Core.Products
                 bData.Category = item.Category;
                 bData.Images = item.Images;
                 bData.PriceEuro = item.PriceEuro;
-
                 db.SaveChanges();
             }
-
             return new ActionResponse { IsSuccess = true, Message = "Battle item updated successfully." };
         }
 
@@ -81,13 +94,12 @@ namespace BattleCats.BusinessLogic.Core.Products
 
         protected ActionResponse ExecuteBattleItemCreateAction(BattleItemDto item)
         {
-           BattleItem? bData;
+            BattleItem? bData;
             using (var db = new ProductContext())
             {
                 bData = db.BattleItems.FirstOrDefault(
                     x => x.Name.Equals(item.Name));
             }
-
             if (bData != null)
             {
                 return new ActionResponse
@@ -96,16 +108,13 @@ namespace BattleCats.BusinessLogic.Core.Products
                     Message = "A battle item with this Name already exist in our system."
                 };
             }
-
             var bLocalData = MapperConfig.Mapper.Map<BattleItem>(item);
             bLocalData.Status = ItemAvailability.Active;
-
             using (var db = new ProductContext())
             {
                 db.BattleItems.Add(bLocalData);
                 db.SaveChanges();
             }
-
             return new ActionResponse
             {
                 IsSuccess = true,
