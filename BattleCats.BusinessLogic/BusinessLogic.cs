@@ -5,11 +5,6 @@ using BattleCats.BusinessLogic.Interface;
 
 namespace BattleCats.BusinessLogic
 {
-    /// <summary>
-    /// Главный фасад BusinessLogic.
-    /// API-контроллеры создают экземпляр этого класса и через геттеры получают
-    /// нужный интерфейс. Каждый Get* возвращает свежий Flow-объект.
-    /// </summary>
     public class BusinessLogic
     {
         public BusinessLogic() { }
@@ -32,6 +27,11 @@ namespace BattleCats.BusinessLogic
         public IOrderAction GetOrderActions()
         {
             return new OrderFlow();
+        }
+
+        public IUserActions GetUserActions()
+        {
+            return new UserFlow();
         }
     }
 }
