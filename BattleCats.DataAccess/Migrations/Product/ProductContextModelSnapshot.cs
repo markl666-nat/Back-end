@@ -68,8 +68,8 @@ namespace BattleCats.DataAccess.Migrations.Product
                             CategoryId = 1,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             LoreId = 1,
-                            Name = "Cat (Basic Tier)",
-                            PriceEuro = 0.99m,
+                            Name = "Slime Cat",
+                            PriceEuro = 1.49m,
                             Status = 0,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -79,8 +79,8 @@ namespace BattleCats.DataAccess.Migrations.Product
                             CategoryId = 1,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             LoreId = 2,
-                            Name = "Tank Cat",
-                            PriceEuro = 2.49m,
+                            Name = "Courier Cat",
+                            PriceEuro = 3.49m,
                             Status = 0,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -90,8 +90,8 @@ namespace BattleCats.DataAccess.Migrations.Product
                             CategoryId = 1,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             LoreId = 3,
-                            Name = "Axe Cat",
-                            PriceEuro = 3.99m,
+                            Name = "Kasli the Bane",
+                            PriceEuro = 7.49m,
                             Status = 0,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -130,34 +130,12 @@ namespace BattleCats.DataAccess.Migrations.Product
                         },
                         new
                         {
-                            Id = 10,
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            LoreId = 10,
-                            Name = "Kasli the Bane",
-                            PriceEuro = 7.49m,
-                            Status = 0,
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
                             Id = 11,
                             CategoryId = 1,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             LoreId = 11,
                             Name = "King of Doom Phono",
                             PriceEuro = 12.99m,
-                            Status = 0,
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            LoreId = 12,
-                            Name = "Courier Cat",
-                            PriceEuro = 3.49m,
                             Status = 0,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -218,28 +196,6 @@ namespace BattleCats.DataAccess.Migrations.Product
                         },
                         new
                         {
-                            Id = 18,
-                            CategoryId = 1,
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            LoreId = 18,
-                            Name = "Slime Cat",
-                            PriceEuro = 1.49m,
-                            Status = 0,
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            LoreId = 4,
-                            Name = "Worker Cat Speed Up",
-                            PriceEuro = 4.99m,
-                            Status = 0,
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
                             Id = 19,
                             CategoryId = 2,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -273,17 +229,6 @@ namespace BattleCats.DataAccess.Migrations.Product
                         },
                         new
                         {
-                            Id = 5,
-                            CategoryId = 3,
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            LoreId = 5,
-                            Name = "Attack Power Up Buff",
-                            PriceEuro = 1.99m,
-                            Status = 0,
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
                             Id = 22,
                             CategoryId = 3,
                             CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
@@ -301,17 +246,6 @@ namespace BattleCats.DataAccess.Migrations.Product
                             LoreId = 23,
                             Name = "Cat Combo: Dragon Slayer",
                             PriceEuro = 3.99m,
-                            Status = 0,
-                            UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 4,
-                            CreatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            LoreId = 6,
-                            Name = "Rare Cat Capsule",
-                            PriceEuro = 7.99m,
                             Status = 0,
                             UpdatedAt = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -365,25 +299,25 @@ namespace BattleCats.DataAccess.Migrations.Product
                         new
                         {
                             Id = 1,
-                            Description = "Базовый кот-новобранец. Дешёвый, быстро призывается, отлично прикрывает фронт.",
+                            Description = "Желейный кот-новобранец. Мягкий снаружи, крепкий внутри. Растворяет врагов кислотой и быстро регенерирует.",
                             DescriptionAdvancedId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Танкокот с огромным запасом здоровья. Поглощает удары вместо лёгких юнитов.",
+                            Description = "Бесстрашный курьер с танковой бронёй. Доставляет посылки прямо на поле боя и поглощает удары.",
                             DescriptionAdvancedId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Снайпер-кот с длинной дальностью атаки. Бьёт врагов из глубокого тыла.",
+                            Description = "Касли — проклятие на двух лапах. Снайпер с магическим уроном по площади из глубокого тыла.",
                             DescriptionAdvancedId = 3
                         },
                         new
                         {
                             Id = 7,
-                            Description = "Изящный фехтовальщик в плаще и шляпе. Стремителен и точен, словно D'Artagnan.",
+                            Description = "Изящный фехтовальщик в плаще и шляпе. Стремителен и точен, словно D'Artagnan из мушкетёров.",
                             DescriptionAdvancedId = 4
                         },
                         new
@@ -395,112 +329,79 @@ namespace BattleCats.DataAccess.Migrations.Product
                         new
                         {
                             Id = 9,
-                            Description = "Каору Ханаяма — мастер боевых искусств с разрушительной силой кулака.",
+                            Description = "Каору Ханаяма — мастер боевых искусств. Один удар кулака способен сокрушить целые армии.",
                             DescriptionAdvancedId = 6
                         },
                         new
                         {
-                            Id = 10,
-                            Description = "Касли — проклятие на двух лапах. Магический урон по площади.",
+                            Id = 11,
+                            Description = "Король Судьбы Phono. Громовая ярость, разрушающая всё на пути. Электрический урон с большой дальностью.",
                             DescriptionAdvancedId = 7
                         },
                         new
                         {
-                            Id = 11,
-                            Description = "Король Судьбы Phono. Громовая ярость, разрушающая всё на пути.",
+                            Id = 13,
+                            Description = "Безумный пельмень-кот (Crazy Baozi). Прыгает на врагов с пугающей радостью. Дешёвый и быстрый.",
                             DescriptionAdvancedId = 8
                         },
                         new
                         {
-                            Id = 12,
-                            Description = "Бесстрашный курьер. Доставляет посылки прямо на поле боя.",
+                            Id = 14,
+                            Description = "Гаматото — гигантский исследовательский кот. Не атакует, но откапывает ресурсы и редкие предметы.",
                             DescriptionAdvancedId = 9
                         },
                         new
                         {
-                            Id = 13,
-                            Description = "Безумный пельмень-кот. Прыгает на врагов с пугающей радостью.",
+                            Id = 15,
+                            Description = "Легелуга. Фигуристка-кот с ледяной грацией и колкими атаками. Замораживает врагов.",
                             DescriptionAdvancedId = 10
                         },
                         new
                         {
-                            Id = 14,
-                            Description = "Гаматото — гигантский исследовательский кот. Откапывает ресурсы.",
+                            Id = 16,
+                            Description = "Pen-Pineapple-Apple-Pen Cat. Простая мелодия — мощное оружие. Стильный, но смертельный.",
                             DescriptionAdvancedId = 11
                         },
                         new
                         {
-                            Id = 15,
-                            Description = "Легелуга. Фигуристка-кот с ледяной грацией и колкими атаками.",
+                            Id = 17,
+                            Description = "Сквайр Луно — благородный молодой воин на службе ночи. Защищает базу от теней.",
                             DescriptionAdvancedId = 12
                         },
                         new
                         {
-                            Id = 16,
-                            Description = "Pen-Pineapple-Apple-Pen Cat. Простая мелодия — мощное оружие.",
-                            DescriptionAdvancedId = 13
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Description = "Сквайр Луно — благородный молодой воин на службе ночи.",
-                            DescriptionAdvancedId = 14
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Description = "Желейный кот. Мягкий снаружи, крепкий внутри. Растворяет врагов кислотой.",
-                            DescriptionAdvancedId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Апгрейд скорости работы базы кошачьего штаба. Ускоряет выпуск юнитов."
-                        },
-                        new
-                        {
                             Id = 19,
-                            Description = "Breakerblast Base — пушка-разрушитель на крыше базы. Бьёт по дальним целям."
+                            Description = "Breakerblast Base — пушка-разрушитель на крыше базы. Бьёт по дальним целям мощным взрывом."
                         },
                         new
                         {
                             Id = 20,
-                            Description = "Стандартное укрепление базы. Простое, дешёвое, эффективное против лёгких атак."
+                            Description = "Стандартное укрепление базы. Простое, дешёвое, эффективное против лёгких атак противника."
                         },
                         new
                         {
                             Id = 21,
-                            Description = "Громовая база. Электрическая турель, парализующая врагов на подступах."
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Бафф усиленной атаки. Все юниты получают +50% к урону на 30 секунд."
+                            Description = "Громовая база. Электрическая турель, парализующая врагов на подступах разрядами молний."
                         },
                         new
                         {
                             Id = 22,
-                            Description = "Cat Combo Pewpewpew. Стартовая мощь Cat Cannon усилена. Бьёт чаще и больнее."
+                            Description = "Cat Combo Pewpewpew. Стартовая мощь Cat Cannon усилена на старте боя — бьёт чаще и больнее."
                         },
                         new
                         {
                             Id = 23,
-                            Description = "Cat Combo Dragon Slayer. Massive Damage против Red, Floating и Angel врагов."
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Гача-капсула на редкого юнита. Шанс получить Uber Rare кота."
+                            Description = "Cat Combo Dragon Slayer. Massive Damage против Red, Floating и Angel врагов. Незаменимо в поздней игре."
                         },
                         new
                         {
                             Id = 24,
-                            Description = "Золотая капсула. Гарантирует юнита Super Rare или выше."
+                            Description = "Золотая капсула. Гарантирует юнита Super Rare или выше. Шанс на Uber Rare значительно повышен."
                         },
                         new
                         {
                             Id = 25,
-                            Description = "Обычная капсула. Случайный кот стандартного редкости. Шанс на Rare."
+                            Description = "Обычная капсула. Случайный кот стандартной редкости. Шанс на Rare — небольшой, но реальный."
                         });
                 });
 
@@ -571,16 +472,16 @@ namespace BattleCats.DataAccess.Migrations.Product
                         new
                         {
                             Id = 7,
-                            Attack = 880,
-                            Health = 3800,
-                            Range = 200
+                            Attack = 1300,
+                            Health = 6500,
+                            Range = 410
                         },
                         new
                         {
                             Id = 8,
-                            Attack = 540,
-                            Health = 2700,
-                            Range = 320
+                            Attack = 360,
+                            Health = 1800,
+                            Range = 220
                         },
                         new
                         {
@@ -592,34 +493,20 @@ namespace BattleCats.DataAccess.Migrations.Product
                         new
                         {
                             Id = 10,
-                            Attack = 360,
-                            Health = 1800,
-                            Range = 220
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Attack = 1300,
-                            Health = 6500,
-                            Range = 410
-                        },
-                        new
-                        {
-                            Id = 12,
                             Attack = 420,
                             Health = 2400,
                             Range = 260
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 11,
                             Attack = 660,
                             Health = 3300,
                             Range = 240
                         },
                         new
                         {
-                            Id = 14,
+                            Id = 12,
                             Attack = 280,
                             Health = 1600,
                             Range = 130
@@ -727,21 +614,9 @@ namespace BattleCats.DataAccess.Migrations.Product
                         },
                         new
                         {
-                            Id = 10,
-                            BattleItemId = 10,
-                            Url = "/images/cats/Kasli_the_Bane.jpg"
-                        },
-                        new
-                        {
                             Id = 11,
                             BattleItemId = 11,
                             Url = "/images/cats/King_of_Doom_Phono.jpg"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            BattleItemId = 12,
-                            Url = "/images/cats/courier_cat.jpg"
                         },
                         new
                         {
@@ -775,18 +650,6 @@ namespace BattleCats.DataAccess.Migrations.Product
                         },
                         new
                         {
-                            Id = 18,
-                            BattleItemId = 18,
-                            Url = "/images/cats/slime_cat.jpg"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BattleItemId = 4,
-                            Url = "/images/cats/default_base.jpg"
-                        },
-                        new
-                        {
                             Id = 19,
                             BattleItemId = 19,
                             Url = "/images/cats/breakerblast_base.jpg"
@@ -805,12 +668,6 @@ namespace BattleCats.DataAccess.Migrations.Product
                         },
                         new
                         {
-                            Id = 5,
-                            BattleItemId = 5,
-                            Url = "/images/cats/catcombo_buff_1.jpg"
-                        },
-                        new
-                        {
                             Id = 22,
                             BattleItemId = 22,
                             Url = "/images/cats/catcombo_buff_1.jpg"
@@ -820,12 +677,6 @@ namespace BattleCats.DataAccess.Migrations.Product
                             Id = 23,
                             BattleItemId = 23,
                             Url = "/images/cats/catcombo_buff_2.jpg"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            BattleItemId = 6,
-                            Url = "/images/cats/normal_gacha.jpg"
                         },
                         new
                         {
