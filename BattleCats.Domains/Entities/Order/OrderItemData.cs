@@ -3,10 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BattleCats.Domains.Entities.Order
 {
-    /// <summary>
-    /// Один товар внутри заказа.
-    /// Зависимая сущность — ссылается на OrderData через OrderId (FK).
-    /// </summary>
+    
     public class OrderItemData
     {
         [Key]
@@ -19,7 +16,7 @@ namespace BattleCats.Domains.Entities.Order
         public OrderData Order { get; set; } = null!;
 
         public string ProductInfo { get; set; } = string.Empty;
-        public int Qua { get; set; }      // quantity, имя как у препода
+        public int Qua { get; set; }      
 
         [Column(TypeName = "decimal(10,2)")]
         public decimal Price { get; set; }

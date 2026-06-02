@@ -3,13 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BattleCats.DataAccess.Context
 {
-    /// <summary>
-    /// Контекст БД для заказов Cat Base Shop.
-    /// Управляет двумя сущностями: OrderData (заказ) и OrderItemData (позиция в заказе).
-    /// 
-    /// Связь 1:N (Order → Items) настроена через Fluent API в OnModelCreating
-    /// согласно презентации препода (Настройка отношений в EF Core).
-    /// </summary>
+    
     public class OrderContext : DbContext
     {
         public DbSet<OrderData> Orders { get; set; } = null!;
@@ -22,7 +16,7 @@ namespace BattleCats.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // 1:N — у одного заказа много позиций
+            
             modelBuilder.Entity<OrderData>()
                 .HasMany(o => o.Items)
                 .WithOne(i => i.Order)

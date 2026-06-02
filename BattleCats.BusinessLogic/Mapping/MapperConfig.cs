@@ -2,10 +2,7 @@
 
 namespace BattleCats.BusinessLogic.Mapping
 {
-    /// <summary>
-    /// Статический инициализатор и держатель AutoMapper.
-    /// В курсовом не используем DI, поэтому маппер живёт как singleton.
-    /// </summary>
+    
     public static class MapperConfig
     {
         private static IMapper? _mapper;

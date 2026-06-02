@@ -2,11 +2,7 @@
 
 namespace BattleCats.Domains.Models.Product
 {
-    /// <summary>
-    /// Расширенный DTO товара со всеми связанными объектами.
-    /// Используется внутри BusinessLogic слоя для передачи между сервисами.
-    /// Для возврата на фронт используется упрощённый BattleItemFlatDto.
-    /// </summary>
+    
     public class BattleItemDto
     {
         public int Id { get; set; }

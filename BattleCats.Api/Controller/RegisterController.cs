@@ -5,12 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BattleCats.Api.Controller
 {
-    /// <summary>
-    /// Контроллер регистрации новых пользователей.
-    /// 
-    /// POST /api/reg — принимает UserRegisterDto, создаёт юзера с ролью User
-    /// и захешированным паролем. Эндпоинт публичный ([AllowAnonymous]).
-    /// </summary>
+ 
     [Route("api/reg")]
     [ApiController]
     public class RegisterController : ControllerBase

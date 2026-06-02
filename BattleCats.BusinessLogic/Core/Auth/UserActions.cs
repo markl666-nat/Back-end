@@ -5,9 +5,7 @@ using BattleCats.Domains.Models.User;
 
 namespace BattleCats.BusinessLogic.Core.Auth
 {
-    /// <summary>
-    /// Низкоуровневые операции CRUD над пользователями (для админки).
-    /// </summary>
+    
     public class UserActions
     {
         internal List<UserListDto> GetAllUsersExecution()

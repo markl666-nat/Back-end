@@ -3,10 +3,7 @@ using BattleCats.Domains.Models.User;
 
 namespace BattleCats.BusinessLogic.Interface
 {
-    /// <summary>
-    /// Интерфейс для админских операций над пользователями.
-    /// Все методы требуют роль Admin (проверяется на уровне контроллера).
-    /// </summary>
+    
     public interface IUserActions
     {
         List<UserListDto> GetAllUsers();

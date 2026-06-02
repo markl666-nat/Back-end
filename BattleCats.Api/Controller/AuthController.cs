@@ -5,12 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BattleCats.Api.Controller
 {
-    /// <summary>
-    /// Контроллер сессии (логин).
-    /// 
-    /// POST /api/session/auth — принимает логин/пароль, возвращает JWT-токен.
-    /// Помечен [AllowAnonymous] чтобы могли логиниться неавторизованные.
-    /// </summary>
+
     [Route("api/session")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -41,7 +36,7 @@ namespace BattleCats.Api.Controller
                 return Unauthorized(result.Message);
             }
 
-            // Message содержит JWT-токен, Id — userId
+
             return Ok(new { token = result.Message, userId = result.Id });
         }
     }

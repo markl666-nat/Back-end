@@ -6,12 +6,7 @@ using System.Security.Claims;
 
 namespace BattleCats.Api.Controller
 {
-    /// <summary>
-    /// Админ-контроллер для управления пользователями.
-    /// 
-    /// Все эндпоинты требуют роль Admin.
-    /// Защита от удаления самого себя — нельзя удалить свой аккаунт пока залогинен.
-    /// </summary>
+    
     [Route("api/user")]
     [ApiController]
     [Authorize(Roles = "Admin")]
@@ -35,7 +30,7 @@ namespace BattleCats.Api.Controller
         [HttpPut("role")]
         public IActionResult ChangeRole([FromBody] UserChangeRoleDto data)
         {
-            // Защита: нельзя изменить роль самому себе (предотвращает потерю Admin)
+           
             var currentUserId = GetCurrentUserId();
             if (currentUserId == data.Id)
             {
@@ -49,7 +44,7 @@ namespace BattleCats.Api.Controller
         [HttpDelete("id")]
         public IActionResult Delete(int id)
         {
-            // Защита: нельзя удалить самого себя
+           
             var currentUserId = GetCurrentUserId();
             if (currentUserId == id)
             {
@@ -60,9 +55,7 @@ namespace BattleCats.Api.Controller
             return Ok(result);
         }
 
-        /// <summary>
-        /// Достаёт ID текущего юзера из JWT-токена.
-        /// </summary>
+ 
         private int GetCurrentUserId()
         {
             var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);

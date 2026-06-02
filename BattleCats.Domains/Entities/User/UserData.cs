@@ -4,11 +4,7 @@ using BattleCats.Domains.Enums;
 
 namespace BattleCats.Domains.Entities.User
 {
-    /// <summary>
-    /// Сущность пользователя сайта Cat Base Shop.
-    /// Хранит логин, email, пароль (БУДЕТ хэширован в Лабе 5).
-    /// Поле Role будет добавлено в Лабе 5 для разграничения прав (User/Admin).
-    /// </summary>
+    
     public class UserData
     {
         [Key]
@@ -34,10 +30,7 @@ namespace BattleCats.Domains.Entities.User
         public DateTime DOB { get; set; }
 
         public GenderTypes Gender { get; set; } = GenderTypes.NotSpecified;
-        /// <summary>
-        /// Роль пользователя для разграничения доступа через [Authorize(Roles=...)].
-        /// По умолчанию — User. Назначается при регистрации в RegisterActions.
-        /// </summary>
+      
         public UserRole Role { get; set; } = UserRole.User;
     }
 }

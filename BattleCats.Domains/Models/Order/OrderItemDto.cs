@@ -1,9 +1,6 @@
 ﻿namespace BattleCats.Domains.Models.Order
 {
-    /// <summary>
-    /// DTO позиции заказа для API-контракта.
-    /// Не содержит OrderId — он подразумевается через родительский OrderDto.
-    /// </summary>
+    
     public class OrderItemDto
     {
         public int Id { get; set; }

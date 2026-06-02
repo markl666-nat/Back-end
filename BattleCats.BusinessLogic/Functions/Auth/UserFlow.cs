@@ -5,9 +5,7 @@ using BattleCats.Domains.Models.User;
 
 namespace BattleCats.BusinessLogic.Functions.Auth
 {
-    /// <summary>
-    /// Поток операций с пользователями. Тонкая обёртка над UserActions.
-    /// </summary>
+    
     public class UserFlow : UserActions, IUserActions
     {
         public List<UserListDto> GetAllUsers()

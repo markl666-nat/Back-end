@@ -3,11 +3,7 @@ using BattleCats.Domains.Models.Order;
 
 namespace BattleCats.BusinessLogic.Interface
 {
-    /// <summary>
-    /// Интерфейс CRUD-операций с заказами.
-    /// Create возвращает ResponceAction (с Id нового заказа).
-    /// Update/Delete возвращают ResponceMsg (без Id).
-    /// </summary>
+    
     public interface IOrderAction
     {
         List<OrderDto> GetAllOrders();

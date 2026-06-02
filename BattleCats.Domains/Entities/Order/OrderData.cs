@@ -3,11 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BattleCats.Domains.Entities.Order
 {
-    /// <summary>
-    /// Заказ покупателя в Cat Base Shop.
-    /// Содержит коллекцию позиций (OrderItemData), итоговую сумму и статус.
-    /// IsDeleted используется для soft-delete вместо физического удаления.
-    /// </summary>
+    
     public class OrderData
     {
         [Key]

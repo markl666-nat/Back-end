@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BattleCats.DataAccess.Migrations.Order
 {
-    /// <inheritdoc />
+    
     public partial class InitialOrderSchema : Migration
     {
-        /// <inheritdoc />
+        
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -57,7 +57,7 @@ namespace BattleCats.DataAccess.Migrations.Order
                 column: "OrderId");
         }
 
-        /// <inheritdoc />
+       
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

@@ -8,19 +8,18 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string из appsettings.json подаЄм в DbSession (используетс€ во всех DbContext'ах)
+
 BattleCats.DataAccess.DbSession.ConnectionStrings =
     builder.Configuration.GetConnectionString("DefaultConnection")!;
-// CORS Ч разрешаем фронту с локального dev-сервера обращатьс€ к API.
-// –егистраци€ политики (addPolicy). јктиваци€ ниже через app.UseCors("AllowFrontend").
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:5173",   // Vite dev по умолчанию
-                "http://localhost:5174",   // запасной порт Vite
-                "http://localhost:3000"    // на случай если переключат на CRA
+                "http://localhost:5173",   
+                "http://localhost:5174",  
+                "http://localhost:3000"    
               )
               .AllowAnyHeader()
               .AllowAnyMethod();
@@ -29,8 +28,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Swagger с поддержкой кнопки "Authorize" Ч туда вводитс€ JWT, и все защищЄнные
-// эндпоинты будут отправл€ть header "Authorization: Bearer <token>" автоматически
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -59,8 +57,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// –егистрируем JWT Bearer authentication.
-// ѕараметры валидации свер€ютс€ с тем что мы кладЄм в TokenService при выпуске токена.
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -75,7 +72,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(JwtSettings.SecretKey)),
             NameClaimType = ClaimTypes.Name,
-            RoleClaimType = ClaimTypes.Role   // ? важно: даЄт работать [Authorize(Roles="...")]
+            RoleClaimType = ClaimTypes.Role   
         };
     });
 
@@ -89,12 +86,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection();   // отключено дл€ dev Ч фронт ходит по HTTP с Vite
+
 app.UseCors("AllowFrontend");
 
-//  –»“»„Ќќ: пор€док middleware Ч Authentication ƒќ Authorization.
-// Authentication читает токен и заполн€ет HttpContext.User.
-// Authorization потом провер€ет [Authorize] и роли.
+
 app.UseAuthentication();
 app.UseAuthorization();
 

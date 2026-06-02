@@ -2,13 +2,7 @@
 
 namespace BattleCats.Domains.Models.User
 {
-    /// <summary>
-    /// DTO для списка пользователей в админ-панели.
-    /// Возвращается через GET /api/user/getAll.
-    /// 
-    /// Не содержит Password — это публичный эндпоинт для админа,
-    /// но хеши паролей наружу мы не выдаём принципиально.
-    /// </summary>
+    
     public class UserListDto
     {
         public int Id { get; set; }
@@ -18,10 +12,7 @@ namespace BattleCats.Domains.Models.User
         public DateTime DOB { get; set; }
     }
 
-    /// <summary>
-    /// DTO для запроса смены роли пользователя.
-    /// Принимается в PUT /api/user/role.
-    /// </summary>
+   
     public class UserChangeRoleDto
     {
         public int Id { get; set; }

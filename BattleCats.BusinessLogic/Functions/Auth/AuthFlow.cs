@@ -5,10 +5,7 @@ using BattleCats.Domains.Models.User;
 
 namespace BattleCats.BusinessLogic.Functions.Auth
 {
-    /// <summary>
-    /// Поток обработки логина. Тонкая обёртка над AuthActions:
-    /// валидируем учётку → если ок, выдаём токен → возвращаем ResponceAction.
-    /// </summary>
+    
     public class AuthFlow : AuthActions, IAuthActions
     {
         public ResponceAction LoginActionFlow(UserAuthAction auth)
@@ -29,7 +26,7 @@ namespace BattleCats.BusinessLogic.Functions.Auth
             return new ResponceAction
             {
                 IsSuccess = true,
-                Message = token,    // ← в Message лежит JWT
+                Message = token,    
                 Id = user.Id
             };
         }

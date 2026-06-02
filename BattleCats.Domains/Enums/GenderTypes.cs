@@ -1,8 +1,6 @@
 ﻿namespace BattleCats.Domains.Enums
 {
-    /// <summary>
-    /// Пол пользователя (опциональное поле при регистрации).
-    /// </summary>
+    
     public enum GenderTypes
     {
         NotSpecified = 0,

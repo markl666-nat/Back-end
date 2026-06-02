@@ -15,12 +15,7 @@ namespace BattleCats.BusinessLogic.Core.Products
 {
     public class BattleItemActions
     {
-        /// <summary>
-        /// Загружаем товары вместе со всеми связанными сущностями:
-        /// Category (для бейджа категории), Lore + DescriptionAdvanced (описание + статы),
-        /// Images (картинки). Без Include() EF Core оставляет навигационные свойства null,
-        /// и AutoMapper мапит их в null на стороне DTO — отсюда пустые карточки на фронте.
-        /// </summary>
+        
         protected List<BattleItemDto> ExecuteGetAllBattleItemsAction()
         {
             List<BattleItem> bData;

@@ -5,13 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BattleCats.Api.Controller
 {
-    /// <summary>
-    /// Контроллер заказов Cat Base Shop.
-    /// 
-    /// Все эндпоинты требуют авторизации (атрибут [Authorize] на классе).
-    /// GetAll/Update/Delete — только Manager+/Admin (это инструменты управления магазином).
-    /// Get(id)/Create — любой авторизованный юзер (свои заказы).
-    /// </summary>
+   
     [Route("api/order")]
     [ApiController]
     [Authorize]

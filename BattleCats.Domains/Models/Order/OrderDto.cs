@@ -2,10 +2,7 @@
 
 namespace BattleCats.Domains.Models.Order
 {
-    /// <summary>
-    /// DTO заказа для API-контракта.
-    /// Включает список позиций. Возвращается в OrderController.
-    /// </summary>
+    
     public class OrderDto
     {
         public int Id { get; set; }

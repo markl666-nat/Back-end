@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BattleCats.DataAccess.Migrations.User
 {
-    /// <inheritdoc />
+    
     public partial class InitialUserSchema : Migration
     {
-        /// <inheritdoc />
+       
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -30,7 +30,7 @@ namespace BattleCats.DataAccess.Migrations.User
                 });
         }
 
-        /// <inheritdoc />
+        
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

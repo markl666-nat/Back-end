@@ -5,9 +5,7 @@ using BattleCats.Domains.Models.Order;
 
 namespace BattleCats.BusinessLogic.Functions.Order
 {
-    /// <summary>
-    /// Поток операций с заказами. Тонкая обёртка над OrderAction.
-    /// </summary>
+    
     public class OrderFlow : OrderAction, IOrderAction
     {
         public List<OrderDto> GetAllOrders()

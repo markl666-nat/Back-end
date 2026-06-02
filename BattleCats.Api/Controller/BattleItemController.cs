@@ -6,14 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BattleCats.Api.Controller
 {
-    /// <summary>
-    /// Контроллер боевых юнитов Cat Base Shop.
-    /// 
-    /// По умолчанию [Authorize] на классе — все методы требуют валидный токен.
-    /// GetAll/GetById помечены [AllowAnonymous] — каталог виден всем.
-    /// Create/Update — только Manager+ или Admin.
-    /// Delete — только Admin (нельзя удалять без admin-прав).
-    /// </summary>
+  
     [Route("api/battleitem")]
     [ApiController]
     [Authorize]

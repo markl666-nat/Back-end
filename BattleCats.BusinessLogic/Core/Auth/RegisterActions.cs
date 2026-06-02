@@ -6,15 +6,12 @@ using BattleCats.Domains.Models.User;
 
 namespace BattleCats.BusinessLogic.Core.Auth
 {
-    /// <summary>
-    /// Низкоуровневая операция регистрации нового юзера.
-    /// Проверяет уникальность UserName/Email, хеширует пароль, ставит роль User по умолчанию.
-    /// </summary>
+  
     public class RegisterActions
     {
         internal ResponceAction RegisterUserExecution(UserRegisterDto uReg)
         {
-            // Базовая валидация обязательных полей
+            
             if (string.IsNullOrEmpty(uReg.UserName) ||
                 string.IsNullOrEmpty(uReg.Password) ||
                 string.IsNullOrEmpty(uReg.Email))
@@ -26,7 +23,7 @@ namespace BattleCats.BusinessLogic.Core.Auth
                 };
             }
 
-            // Проверка уникальности
+           
             UserData? existing;
             using (var db = new UserContext())
             {
@@ -43,7 +40,7 @@ namespace BattleCats.BusinessLogic.Core.Auth
                 };
             }
 
-            // Создаём юзера с дефолтной ролью User и захешированным паролем
+            
             var user = new UserData
             {
                 UserName = uReg.UserName,
